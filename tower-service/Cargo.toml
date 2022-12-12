@@ -20,6 +20,8 @@ categories = ["asynchronous", "network-programming"]
 edition = "2018"
 
 [dependencies]
+hyper = { version = "1.0.0-rc.1", features = ["full"] }
+
 
 [dev-dependencies]
 http = "0.2"
