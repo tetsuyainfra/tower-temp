@@ -88,9 +88,9 @@ impl<T, U, E> Service<T> for BoxService<T, U, E> {
     type Error = E;
     type Future = BoxFuture<U, E>;
 
-    fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), E>> {
-        self.inner.get_mut().poll_ready(cx)
-    }
+    // fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), E>> {
+    //     self.inner.get_mut().poll_ready(cx)
+    // }
 
     fn call(&mut self, request: T) -> BoxFuture<U, E> {
         self.inner.get_mut().call(request)

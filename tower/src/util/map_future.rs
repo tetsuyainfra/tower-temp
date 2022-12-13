@@ -57,9 +57,9 @@ where
     type Error = E;
     type Future = Fut;
 
-    fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
-        self.inner.poll_ready(cx).map_err(From::from)
-    }
+    // fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
+    //     self.inner.poll_ready(cx).map_err(From::from)
+    // }
 
     fn call(&mut self, req: R) -> Self::Future {
         (self.f)(self.inner.call(req))

@@ -65,10 +65,10 @@ where
     type Error = Error;
     type Future = MapErrFuture<S::Future, F>;
 
-    #[inline]
-    fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
-        self.inner.poll_ready(cx).map_err(self.f.clone())
-    }
+    // #[inline]
+    // fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
+    //     self.inner.poll_ready(cx).map_err(self.f.clone())
+    // }
 
     #[inline]
     fn call(&mut self, request: Request) -> Self::Future {

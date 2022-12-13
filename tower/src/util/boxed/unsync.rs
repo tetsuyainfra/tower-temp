@@ -52,9 +52,9 @@ impl<T, U, E> Service<T> for UnsyncBoxService<T, U, E> {
     type Error = E;
     type Future = UnsyncBoxFuture<U, E>;
 
-    fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), E>> {
-        self.inner.poll_ready(cx)
-    }
+    // fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), E>> {
+    //     self.inner.poll_ready(cx)
+    // }
 
     fn call(&mut self, request: T) -> UnsyncBoxFuture<U, E> {
         self.inner.call(request)
@@ -76,9 +76,9 @@ where
     type Error = S::Error;
     type Future = Pin<Box<dyn Future<Output = Result<S::Response, S::Error>>>>;
 
-    fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
-        self.inner.poll_ready(cx)
-    }
+    // fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
+    //     self.inner.poll_ready(cx)
+    // }
 
     fn call(&mut self, request: Request) -> Self::Future {
         Box::pin(self.inner.call(request))

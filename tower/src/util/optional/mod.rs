@@ -41,16 +41,16 @@ where
     type Error = crate::BoxError;
     type Future = ResponseFuture<T::Future>;
 
-    fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
-        match self.inner {
-            Some(ref mut inner) => match inner.poll_ready(cx) {
-                Poll::Ready(r) => Poll::Ready(r.map_err(Into::into)),
-                Poll::Pending => Poll::Pending,
-            },
-            // None services are always ready
-            None => Poll::Ready(Ok(())),
-        }
-    }
+    // fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), Self::Error>> {
+    //     match self.inner {
+    //         Some(ref mut inner) => match inner.poll_ready(cx) {
+    //             Poll::Ready(r) => Poll::Ready(r.map_err(Into::into)),
+    //             Poll::Pending => Poll::Pending,
+    //         },
+    //         // None services are always ready
+    //         None => Poll::Ready(Ok(())),
+    //     }
+    // }
 
     fn call(&mut self, request: Request) -> Self::Future {
         let inner = self.inner.as_mut().map(|i| i.call(request));

@@ -194,18 +194,18 @@ pub(crate) mod macros;
 // pub mod steer;
 // #[cfg(feature = "timeout")]
 // pub mod timeout;
-// #[cfg(feature = "util")]
-// pub mod util;
+#[cfg(feature = "util")]
+pub mod util;
 
-// pub mod builder;
-// pub mod layer;
+pub mod builder;
+pub mod layer;
 
-// #[cfg(feature = "util")]
+#[cfg(feature = "util")]
 // #[doc(inline)]
-// pub use self::util::{service_fn, ServiceExt};
+pub use self::util::{service_fn, ServiceExt};
 
 // #[doc(inline)]
-// pub use crate::builder::ServiceBuilder;
+pub use crate::builder::ServiceBuilder;
 // #[cfg(feature = "make")]
 // #[doc(inline)]
 // pub use crate::make::MakeService;

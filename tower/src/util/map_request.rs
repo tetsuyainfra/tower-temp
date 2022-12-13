@@ -49,10 +49,10 @@ where
     type Error = S::Error;
     type Future = S::Future;
 
-    #[inline]
-    fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), S::Error>> {
-        self.inner.poll_ready(cx)
-    }
+    // #[inline]
+    // fn poll_ready(&mut self, cx: &mut Context<'_>) -> Poll<Result<(), S::Error>> {
+    //     self.inner.poll_ready(cx)
+    // }
 
     #[inline]
     fn call(&mut self, request: R1) -> S::Future {
